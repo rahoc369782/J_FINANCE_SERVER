@@ -19,5 +19,8 @@
     "url": "https://github.com/rahoc369782/J_FINANCE_CLIENT/issues"
   },
   "homepage": "https://github.com/rahoc369782/J_FINANCE_CLIENT#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  }
 }

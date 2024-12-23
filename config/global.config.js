@@ -3,6 +3,8 @@ export const CONFIG = {
     "/Users/jeren/j-projects/J_FINANCE_CLIENT/public/data/transactions/transactions.dt",
   TRANSACTION_BUFFER_LEANGTH: 1000,
   J_FINANCE_FILE_OFFSET_TABLE_RESERVED_BYTES: 30,
+  USER: "cretoprof@gmail.com",
+  APP_PASSWORD: "bondutvwjwvhruvu",
   GIT_CREDS: {
     access_token: "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",
     base_url: "https://api.github.com",

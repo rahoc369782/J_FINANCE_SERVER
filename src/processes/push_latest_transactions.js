@@ -94,8 +94,10 @@ async function extract_sections_from_buf(sha, buffer_data, output_buffer) {
       throw new Error("Failed to generate final buffer.");
     }
 
-    // // Push data to Git's output file
+    // Push data to Git's output file
     await data_pushing_process(sha, status["final_buf"]);
+
+    send_notification();
   } catch (err) {
     console.error("Error during section extraction:", err.message);
     throw err;
@@ -119,6 +121,8 @@ export async function transaction_pushing_process_initialization() {
     }
 
     const { sha, buffer_data } = j_input;
+
+    console.log("checking for rutik", buffer_data);
 
     // Extract and process sections from the input buffer
     await extract_sections_from_buf(sha, buffer_data, j_output["buffer_data"]);

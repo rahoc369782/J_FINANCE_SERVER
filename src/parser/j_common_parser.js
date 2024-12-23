@@ -10,7 +10,6 @@ function c_j_parser({ buffer }) {
 }
 
 // Maupulators
-
 function c_j_hdr_modifier(obj, batch_size, last_processed_timestamp) {
   obj["total_transactions"] = obj["total_transactions"] + batch_size;
   obj["transaction_in_batch"] = batch_size;

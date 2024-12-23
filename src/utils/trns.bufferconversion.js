@@ -22,7 +22,7 @@ function parsed_to_require_ledger_schema(trns) {
 export function process_trns(buffer, last_processed_timestamp) {
   const parsed_data = JSON.parse(buffer);
   let trns_sec = "";
-  let last_processed_timestamp = "";
+  // let last_processed_timestamp = "";
   parsed_data.forEach((trns) => {
     if (trns["timestamp"] > last_processed_timestamp) {
       const parsed_trns = parsed_to_require_ledger_schema(trns);
