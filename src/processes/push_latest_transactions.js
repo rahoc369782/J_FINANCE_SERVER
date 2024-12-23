@@ -77,8 +77,8 @@ async function extract_sections_from_buf(sha, buffer_data, output_buffer) {
       throw new Error("Compaction process failed.");
     }
 
-    fs.writeFileSync("/jeren1/j-finance/master.ledger", process_status["data"]);
-    console.log("Compaction status:", process_status);
+    // fs.writeFileSync("/jeren1/j-finance/master.ledger", process_status["data"]);
+    // console.log("Compaction status:", process_status);
 
     // Modify headers as needed
     const mod_obj = c_j_hdr_modifier(
@@ -121,12 +121,12 @@ export async function transaction_pushing_process_initialization() {
       throw new Error("Failed to read input or output files.");
     }
 
-    const { sha, buffer_data } = j_input;
+    const { sha, buffer_data } = j_output;
 
     console.log("checking for rutik", buffer_data);
 
     // Extract and process sections from the input buffer
-    await extract_sections_from_buf(sha, buffer_data, j_output["buffer_data"]);
+    await extract_sections_from_buf(sha, j_input["buffer_data"], buffer_data);
     console.log("Transaction pushing process completed successfully.");
   } catch (err) {
     console.error("Error during transaction processing:", err.message);
