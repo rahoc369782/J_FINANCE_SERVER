@@ -22,14 +22,14 @@ function parsed_to_require_ledger_schema(trns) {
 export function process_trns(buffer, last_processed_timestamp) {
   const parsed_data = JSON.parse(buffer);
   let trns_sec = "";
+  let last_processed_timestamp = "";
   parsed_data.forEach((trns) => {
-    const parsed_trns = parsed_to_require_ledger_schema(trns);
-    trns_sec += parsed_trns + "\n";
-    // if (trns["timestamp"] > last_processed_timestamp) {
-    //   // We need to processed it for ledget transaction.
-    //   console.log(trns);
-    // }
+    if (trns["timestamp"] > last_processed_timestamp) {
+      const parsed_trns = parsed_to_require_ledger_schema(trns);
+      trns_sec += parsed_trns + "\n";
+      last_processed_timestamp = trns["timestamp"];
+    }
   });
 
-  return { success: true, data: trns_sec };
+  return { success: true, data: trns_sec, last_processed_timestamp };
 }

@@ -65,9 +65,6 @@ async function extract_sections_from_buf(sha, buffer_data, output_buffer) {
     if (!out_hdr_buff.success) {
       throw new Error("Failed to parse header buffer.");
     }
-    // // Modify headers as needed
-    // const mod_obj = c_j_hdr_modifier(out_hdr_buff["data"], 5);
-    // console.log("Modified headers:", mod_obj);
 
     const last_processed_timestamp =
       out_hdr_buff["data"]["last_processed_timestamp"];
@@ -79,19 +76,26 @@ async function extract_sections_from_buf(sha, buffer_data, output_buffer) {
       throw new Error("Compaction process failed.");
     }
 
-    console.log(process_status["data"]);
-    fs.writeFileSync("./test.txt", process_status["data"]);
+    fs.writeFileSync("/jeren1/j-finance/master.ledger", process_status["data"]);
     console.log("Compaction status:", process_status);
 
-    // Generate the final buffer
-    // const status = generator_wrapper(mod_obj, process_status["data"]);
+    // Modify headers as needed
+    const mod_obj = c_j_hdr_modifier(
+      out_hdr_buff["data"],
+      5,
+      process_status["last_processed_timestamp"]
+    );
+    console.log("Modified headers:", mod_obj);
 
-    // if (!status.success) {
-    //   throw new Error("Failed to generate final buffer.");
-    // }
+    // Generate the final buffer
+    const status = generator_wrapper(mod_obj, process_status["data"]);
+
+    if (!status.success) {
+      throw new Error("Failed to generate final buffer.");
+    }
 
     // // Push data to Git's output file
-    // await data_pushing_process(sha, status["final_buf"]);
+    await data_pushing_process(sha, status["final_buf"]);
   } catch (err) {
     console.error("Error during section extraction:", err.message);
     throw err;
