@@ -30,7 +30,7 @@ async function read_gitfiles({ file_type, buffer_data = false }) {
 async function write_gitfiles({ body }) {
   const result = await NetworkUtility(
     CONFIG["GIT_CREDS"]["base_url"],
-    CONFIG["GIT_CREDS"]["j_finance_input_file_path_generator"](),
+    CONFIG["GIT_CREDS"]["j_finance_output_file_path_generator"](),
     "PUT",
     {
       Authorization: `token ${CONFIG["GIT_CREDS"]["access_token"]}`,

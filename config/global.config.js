@@ -6,7 +6,7 @@ export const CONFIG = {
   USER: "cretoprof@gmail.com",
   APP_PASSWORD: "bondutvwjwvhruvu",
   GIT_CREDS: {
-    access_token: "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",
+    access_token: "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",
     base_url: "https://api.github.com",
     owner: "rahoc369782",
     repo: "J_FINANCE_CONNECTOR",
