@@ -77,8 +77,8 @@ async function extract_sections_from_buf(sha, buffer_data, output_buffer) {
       throw new Error("Compaction process failed.");
     }
 
-    // fs.writeFileSync("/jeren1/j-finance/master.ledger", process_status["data"]);
-    // console.log("Compaction status:", process_status);
+    fs.writeFileSync("/jeren1/j-finance/master.ledger", process_status["data"]);
+    console.log("Compaction status:", process_status);
 
     // Modify headers as needed
     const mod_obj = c_j_hdr_modifier(
